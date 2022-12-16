@@ -1,13 +1,28 @@
 
-const computerChoice = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
 
+game();
+function game()
+{
+
+
+    for (let i = 0; i < 5;i ++)
+    {
+        let computerChoice = getComputerChoice();
+        let playerChoice = prompt("Choose your weapon. Rock, paper or Scissors!");
+        console.log(playRound(playerChoice, computerChoice));
+        console.log("Player Score: " + playerScore +"\nComputer Score: " +computerScore );
+    }
+
+}
 function playRound(playerSelection, computerSelection)
 {
     let winner;
-
+    //converts choices to lowercase so user can input any case
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-
+    //determines winner
     if (playerSelection === computerSelection)
     {
         winner = "Its a draw!";
@@ -18,10 +33,12 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === "paper")
         {
             winner ="You lose! Paper covers Rock!";
+            computerScore++;
         }   
         else 
         {
             winner ="You win! Paper covers Rock!";
+            playerScore++;
         }
     }
     else if(playerSelection === "paper")
@@ -29,10 +46,12 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection ==="scissors")
         {
             winner ="You lose! Scissors cuts Paper!";
+            computerScore++;
         } 
         else
         {
             winner ="You Win! Scissors cuts Paper!";
+            playerScore++;
         }   
     } 
     else if(playerSelection === "scissors")
@@ -40,12 +59,15 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === "rock")
         {
             winner = "You Lose! Rock smashes Scissors!";
+            computerScore++;
         }
         else
         {
             winner = "You win! Rock smashes Sciccors!";
+            playerScore++;
         }
     }
+    //returns winner
     return winner;
 }
 
