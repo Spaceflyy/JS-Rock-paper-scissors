@@ -1,27 +1,47 @@
-
+const buttons = document.querySelectorAll('button');
+const result = document.querySelector(".results");
+const outcome = document.createElement("div");
+const score = document.createElement("div");
 let playerScore = 0;
 let computerScore = 0;
 
-game();
-function game()
-{
+
+buttons.forEach((button) => {
+
+  button.addEventListener('click', e => {
+    let computerChoice = getComputerChoice();
+    console.log("Computer Choice: " + computerChoice);
+    outcome.textContent = playRound(e.target.innerText,computerChoice);
+    score.textContent = "Player Score: " + playerScore +"\nComputer Score: " +computerScore ;
+    result.appendChild(outcome);
+    result.appendChild(score);
+  });
+});
 
 
-    for (let i = 0; i < 5;i ++)
-    {
-        let computerChoice = getComputerChoice();
-        let playerChoice = prompt("Choose your weapon. Rock, paper or Scissors!");
-        console.log(playRound(playerChoice, computerChoice));
+
+
+
+
+// function game()
+// {
+
+
+//    // for (let i = 0; i < 5;i ++)
+//   //  {
+
+//         let playerChoice = //prompt("Choose your weapon. Rock, paper or Scissors!");
         console.log("Player Score: " + playerScore +"\nComputer Score: " +computerScore );
-    }
+//  //   }
 
-}
+// }
 function playRound(playerSelection, computerSelection)
 {
     let winner;
     //converts choices to lowercase so user can input any case
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
+
     //determines winner
     if (playerSelection === computerSelection)
     {
@@ -37,7 +57,7 @@ function playRound(playerSelection, computerSelection)
         }   
         else 
         {
-            winner ="You win! Paper covers Rock!";
+            winner ="You win! Scissors smashes Rock!";
             playerScore++;
         }
     }
@@ -50,7 +70,7 @@ function playRound(playerSelection, computerSelection)
         } 
         else
         {
-            winner ="You Win! Scissors cuts Paper!";
+            winner ="You Win! Paper covers Rock!";
             playerScore++;
         }   
     } 
@@ -63,11 +83,10 @@ function playRound(playerSelection, computerSelection)
         }
         else
         {
-            winner = "You win! Rock smashes Sciccors!";
+            winner = "You win! Scissors cuts Paper!";
             playerScore++;
         }
     }
-    //returns winner
     return winner;
 }
 
