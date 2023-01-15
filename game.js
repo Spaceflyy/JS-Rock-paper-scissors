@@ -8,33 +8,17 @@ let computerScore = 0;
 
 buttons.forEach((button) => {
 
-  button.addEventListener('click', e => {
+  button.addEventListener('click', (e) => {
     let computerChoice = getComputerChoice();
     console.log("Computer Choice: " + computerChoice);
     outcome.textContent = playRound(e.target.innerText,computerChoice);
-    score.textContent = "Player Score: " + playerScore +"\nComputer Score: " +computerScore ;
+    score.textContent = "Player Score: " + playerScore +"\nComputer Score: " +computerScore;
     result.appendChild(outcome);
     result.appendChild(score);
   });
 });
 
 
-
-
-
-
-// function game()
-// {
-
-
-//    // for (let i = 0; i < 5;i ++)
-//   //  {
-
-//         let playerChoice = //prompt("Choose your weapon. Rock, paper or Scissors!");
-        console.log("Player Score: " + playerScore +"\nComputer Score: " +computerScore );
-//  //   }
-
-// }
 function playRound(playerSelection, computerSelection)
 {
     let winner;

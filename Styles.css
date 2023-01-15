@@ -1,0 +1,22 @@
+h1
+{
+    text-align: center;
+}
+
+.buttonContainer, .results
+{
+    display:flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+.results
+{
+    flex-direction: column;
+    margin-top: 20px;
+}
+button
+{
+    width: 150px;
+    height: 50pt;
+}
