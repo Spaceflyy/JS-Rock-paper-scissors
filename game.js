@@ -17,17 +17,15 @@ buttons.forEach((button) => {button.addEventListener('click', (e) => {
 
     if(playerScore ==5 )
     {
-        result.removeChild(selection);
+
         outcome.textContent="Congratulations you won!";
 
     } 
     else if(computerScore ==5)
     {
-        result.removeChild(selection);
         outcome.textContent="Oh no! You Lost!";
 
     }
-
     } 
     result.appendChild(selection);
     result.appendChild(outcome);
