@@ -1,20 +1,38 @@
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector(".results");
 const outcome = document.createElement("div");
-const score = document.createElement("div");
+const score = document.createElement("p");
+const selection =document.createElement("div");
 let playerScore = 0;
 let computerScore = 0;
 
-
-buttons.forEach((button) => {
-
-  button.addEventListener('click', (e) => {
+buttons.forEach((button) => {button.addEventListener('click', (e) => {
+    if((playerScore !==5) && (computerScore !==5))
+    {
     let computerChoice = getComputerChoice();
-    console.log("Computer Choice: " + computerChoice);
+
     outcome.textContent = playRound(e.target.innerText,computerChoice);
     score.textContent = "Player Score: " + playerScore +"\nComputer Score: " +computerScore;
+    selection.textContent = "The computer chose: " + computerChoice;
+
+    if(playerScore ==5 )
+    {
+        result.removeChild(selection);
+        outcome.textContent="Congratulations you won!";
+
+    } 
+    else if(computerScore ==5)
+    {
+        result.removeChild(selection);
+        outcome.textContent="Oh no! You Lost!";
+
+    }
+
+    } 
+    result.appendChild(selection);
     result.appendChild(outcome);
     result.appendChild(score);
+
   });
 });
 
@@ -38,6 +56,7 @@ function playRound(playerSelection, computerSelection)
         {
             winner ="You lose! Paper covers Rock!";
             computerScore++;
+
         }   
         else 
         {
